@@ -19,21 +19,12 @@
 <body>
     <div class="container">
         <div class="form-label-group">
-
-            <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" value="" required="" autofocus="">
-            <label for="inputEmail">Email</label>
-            <input type="text" name="number" id="inputEmail" class="form-control" placeholder="Number" value="" required="" autofocus="">
             <label for="inputEmail">Número</label>
+            <input type="text" name="number" id="inputEmail" class="form-control" placeholder="Number" value="" required="" autofocus="">
         </div>
     </div>
    
 <script>
-    const date_old = new Date(2021,5,04).getTime()
-    const date_now = Date.now()
-    const res = date_now-date_old;
-    console.log((parseInt(res/60/60/24)))
-    document.body.innerHTML=document.body.innerHTML.replace(/(STF)/g,"<span style='background:yellow;'>$1</span>")
-
     document.querySelectorAll("input").forEach(e=> {
         e.addEventListener("input",input=>{
             input.target.value= input.target.value.replace(/(\D)/g,"")
