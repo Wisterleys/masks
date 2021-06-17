@@ -20,18 +20,32 @@
     <div class="container">
         <div class="form-label-group">
             <label for="inputEmail">Número min 1 e máximo 200</label>
-            <input type="text" name="number" id="inputEmail" class="form-control" placeholder="Number" value="" required="" autofocus="">
+            <input type="text" name="number" id="inputEmail" class="form-control" placeholder="Number" value="" required="" autofocus="" data-js="maxmin">
+            <label for="inputEmail">Cel:</label>
+            <input type="text" name="number" id="inputEmail" class="form-control" placeholder="(99) 9 9999-9999" value="" required="" autofocus="" data-js="cel">
         </div>
     </div>
    
 <script>
-    document.querySelectorAll("input").forEach(e=> {
-        e.addEventListener("input",input=>{
-            input.target.value= input.target.value.replace(/(\D)/g,"")
+    const mask={
+        maxmin(value){
+            return value.replace(/(\D)/g,"")
             .replace(/(\d{1})/,num=>{return (num<1)?1:num})
             .replace(/\d{3}/,num=>{
                 return num>200?200:num
             }).replace(/(\d{3})\d+?$/,'$1')
+        },
+        cel(value){
+            return value.replace(/\D/,'')
+            .replace(/([\d]{2})/,'($1) ')
+            .replace(/([\d]{4})/,'$1-')
+            .replace(/(-[\d]{4})/,'$1-')
+        }
+    }
+    document.querySelectorAll("input").forEach(e=> {
+        e.addEventListener("input",$input=>{
+            const camp=$input.target.dataset.js
+            $input.target.value= mask[camp]($input.target.value)
         })
     });
 </script>
