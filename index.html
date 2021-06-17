@@ -22,7 +22,7 @@
             <label for="inputEmail">Número min 1 e máximo 200</label>
             <input type="text" name="number" id="inputEmail" class="form-control" placeholder="Number" value="" required="" autofocus="" data-js="maxmin">
             <label for="inputEmail">Cel:</label>
-            <input type="text" name="number" id="inputEmail" class="form-control" placeholder="(99) 9 9999-9999" value="" required="" autofocus="" data-js="cel">
+            <input type="text" name="number" id="inputEmail" class="form-control" placeholder="(99) 99999-9999" value="" required="" autofocus="" data-js="cel">
         </div>
     </div>
    
@@ -37,8 +37,8 @@
         },
         cel(value){
             return value.replace(/\D/g,'')
-            .replace(/([\d]{2})(\d)/,'($1) $2 ')
-            .replace(/([\d]{4})(\d)/,'$1-$2')
+            .replace(/([\d]{2})(\d)/,'($1) $2')
+            .replace(/([\s][\d]{5})(\d)/,'$1-$2')
             .replace(/(-[\d]{4})\d+?$/,'$1')
         }
     }
