@@ -20,9 +20,11 @@
     <div class="container">
         <div class="form-label-group">
             <label for="inputEmail">Número min 1 e máximo 200</label>
-            <input type="text" name="number" id="inputEmail" class="form-control" placeholder="Number" value="" required="" autofocus="" data-js="maxmin">
+            <input type="text" name="number" id="inputEmail" class="form-control" placeholder="Number" value="" required="" autofocus="" data-mask="maxmin">
             <label for="inputEmail">Cel:</label>
-            <input type="text" name="number" id="inputEmail" class="form-control" placeholder="(99) 99999-9999" value="" required="" autofocus="" data-js="cel">
+            <input type="text" name="number" id="inputEmail" class="form-control" placeholder="(00) 00000-0000" value="" required="" autofocus="" data-mask="cel">
+            <label for="inputEmail">CPF:</label>
+            <input type="text" name="number" id="inputEmail" class="form-control" placeholder="000-000-000-00" value="" required="" autofocus="" data-mask="cpf">
         </div>
     </div>
    
@@ -40,11 +42,18 @@
             .replace(/([\d]{2})(\d)/,'($1) $2')
             .replace(/([\s][\d]{5})(\d)/,'$1-$2')
             .replace(/(-[\d]{4})\d+?$/,'$1')
+        },
+        cpf(value){
+            return value.replace(/\D/g,'')
+            .replace(/([\d]{3})(\d)/,'$1.$2')
+            .replace(/([\d]{3})(\d)/,'$1.$2')
+            .replace(/([\d]{3})(\d{1,2})/,'$1-$2')
+            .replace(/(-[\d]{2})\d+?$/,'$1')
         }
     }
     document.querySelectorAll("input").forEach(e=> {
         e.addEventListener("input",$input=>{
-            const camp=$input.target.dataset.js
+            const camp=$input.target.dataset.mask
             $input.target.value= mask[camp]($input.target.value)
         })
     });
