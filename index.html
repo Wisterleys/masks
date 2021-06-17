@@ -25,6 +25,8 @@
             <input type="text" name="number" id="inputEmail" class="form-control" placeholder="(00) 00000-0000" value="" required="" autofocus="" data-mask="cel">
             <label for="inputEmail">CPF:</label>
             <input type="text" name="number" id="inputEmail" class="form-control" placeholder="000-000-000-00" value="" required="" autofocus="" data-mask="cpf">
+            <label for="inputEmail">CNPJ:</label>
+            <input type="text" name="number" id="inputEmail" class="form-control" placeholder="00.000.000/0000-00" value="" required="" autofocus="" data-mask="cnpj">
         </div>
     </div>
    
@@ -48,6 +50,14 @@
             .replace(/([\d]{3})(\d)/,'$1.$2')
             .replace(/([\d]{3})(\d)/,'$1.$2')
             .replace(/([\d]{3})(\d{1,2})/,'$1-$2')
+            .replace(/(-[\d]{2})\d+?$/,'$1')
+        },
+        cnpj(value){
+            return value.replace(/\D/g,'')
+            .replace(/([\d]{2})(\d)/,'$1.$2')
+            .replace(/([\d]{3})(\d)/,'$1.$2')
+            .replace(/([\d]{3})(\d)/,'$1/$2')
+            .replace(/([\d]{4})(\d{1,2})/,'$1-$2')
             .replace(/(-[\d]{2})\d+?$/,'$1')
         }
     }
