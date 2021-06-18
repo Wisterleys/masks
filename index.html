@@ -27,6 +27,8 @@
             <input type="text" name="number" id="inputEmail" class="form-control" placeholder="000-000-000-00" value="" required="" autofocus="" data-mask="cpf">
             <label for="inputEmail">CNPJ:</label>
             <input type="text" name="number" id="inputEmail" class="form-control" placeholder="00.000.000/0000-00" value="" required="" autofocus="" data-mask="cnpj">
+            <label for="inputEmail">CPF/CNPJ:</label>
+            <input type="text" name="number" id="inputEmail" class="form-control" placeholder="CPF/CNPJ..." value="" required="" autofocus="" data-mask="cpfcnpj">
         </div>
     </div>
    
@@ -59,6 +61,9 @@
             .replace(/([\d]{3})(\d)/,'$1/$2')
             .replace(/([\d]{4})(\d{1,2})/,'$1-$2')
             .replace(/(-[\d]{2})\d+?$/,'$1')
+        },
+        cpfcnpj(value){
+           return value.length<15?this.cpf(value):this.cnpj(value)
         }
     }
     document.querySelectorAll("input").forEach(e=> {
