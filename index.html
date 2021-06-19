@@ -28,17 +28,19 @@
             <label for="inputEmail">CNPJ:</label>
             <input type="text" name="number" id="inputEmail" class="form-control" placeholder="00.000.000/0000-00" value="" required="" autofocus="" data-mask="cnpj">
             <label for="inputEmail">CPF/CNPJ:</label>
-            <input type="text" name="number" id="inputEmail" class="form-control" placeholder="CPF/CNPJ..." value="" required="" autofocus="" data-mask="cpfcnpj">
+            <input type="text" name="number" id="inputEmail" class="form-control" placeholder="..." value="" required="" autofocus="" data-mask="cpfcnpj">
         </div>
     </div>
    
 <script>
     const mask={
         maxmin(value){
+            const min=1;
+            const max=200;
             return value.replace(/(\D)/g,"")
-            .replace(/(\d{1})/,num=>{return (num<1)?1:num})
+            .replace(/(\d{1})/,num=>{return (num<min)?min:num})
             .replace(/\d{3}/,num=>{
-                return num>200?200:num
+                return num>max?max:num
             }).replace(/(\d{3})\d+?$/,'$1')
         },
         cel(value){
