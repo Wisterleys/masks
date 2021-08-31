@@ -1,7 +1,9 @@
 const mask={
     maxmin(value){
+        // Não aceita valores fora desse intervalo
         const min=1;
         const max=200;
+        //--------------------------------------
         return value.replace(/(\D)/g,"")
         .replace(/(\d{1})/,num=>{return (num<min)?min:num})
         .replace(/\d{3}/,num=>{
