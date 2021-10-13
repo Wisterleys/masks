@@ -43,7 +43,13 @@ const mask={
         return value.replace(/\D/g,'')
         .replace(/([\d]{2})(\d)/,'$1,$2')
         .replace(/(,[\d]{2})\d+?$/,'$1')
-    } 
+    },
+    brdefault(value){
+        return value.replace(/\D/g,'')
+        .replace(/([\d]{1}[\.])/g,'$1.')
+        .replace(/([\d]{3})/g,'$1.')
+        .replace(/([\d]{3})$/,',$1')
+    }
     
 }
 document.querySelectorAll("input").forEach(e=> {
