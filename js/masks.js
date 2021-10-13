@@ -46,7 +46,7 @@ const mask={
     },
     brdefault(value){
         return value.replace(/\D/g,'')
-        .replace(/([\d]{1})([\d]{3})/g,'$1.$2')
+        .replace(/([\d]{1})([\d]{2})/g,'$1.$2')
         .replace(/([\d]{3})$/,',$1')
     }
     
